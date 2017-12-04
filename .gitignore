@@ -1,0 +1,16 @@
+*.db
+*.pyc
+__pycache_/
+.DS_Store
+.env
+*.sqlite
+.idea/
+*.egg-info
+.xml
+
+build
+generated
+dist
+
+.tox
+.coverage.idea
