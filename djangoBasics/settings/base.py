@@ -49,9 +49,9 @@ THIRD_PARTY_APPS = (
 )
 
 LOCAL_APPS = (
-    'blog',
-    'courses',
-    'polls',
+    'project.blog',
+    'project.courses',
+    'project.polls',
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -93,8 +93,12 @@ WSGI_APPLICATION = 'djangoBasics.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': str(ROOT_DIR.path('db.sqlite3')),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'djangobasics_db',
+        'USER': 'hopeaz',
+        'PASSWORD': 'babygirlh13',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
