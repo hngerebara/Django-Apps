@@ -2,7 +2,9 @@
 {% block content %}
     {% for post in posts %}
         <div class="col-md-6 card bg-dark text-white">
-            <img class="card-img" src="..." alt="Card image">
+            {% if post.upload_file %}
+                <img class="card-img img-responsive" src="{{post.upload_file.url}}" alt="Card image" />
+            {% endif %}
             <div class="card-img-overlay">
                 <h4 class="card-title"><a href="{%  url 'posts:post_detail' pk=post.pk %}">{{ post.title }}</a></h4>
                 <p class="card-text"> {{ post.text }}</p>

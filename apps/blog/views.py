@@ -35,7 +35,7 @@ def post_detail(request, pk):
     return render(request, 'blog/post_detail.html', context)
 
 def post_new(request):
-    form = PostForm(request.POST)
+    form = PostForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         post = form.save(commit=False)
         post.author = request.user
@@ -51,10 +51,10 @@ def post_new(request):
     }
     return render(request, 'blog/post_edit.html', context)
 
-def post_edit(request, pk):
+def post_edit(request, pk=None):
     instance = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
-        form = PostForm(request.POST, instance=instance)
+        form = PostForm(request.POST or None, request.FILES or None, instance=instance)
         if form.is_valid():
             post = form.save(commit = False)
             post.author = request.user

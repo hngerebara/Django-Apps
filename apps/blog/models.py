@@ -6,11 +6,20 @@ from django.core.urlresolvers import reverse
 from django.utils import timezone
 
 # Create your models here.
+
+def upload_location(instance, filename):
+    return "%s/%s" %(instance.id, filename)
+
 class Post(models.Model):
     # author = models.ForeignKey('auth.User')
     title = models.CharField(max_length=200)
     text = models.TextField()
-    upload_file = models.FileField(null=True, blank=True)
+    upload_file = models.ImageField(upload_to=upload_location,
+                                    blank=True,
+                                    height_field="height_field",
+                                    width_field="width_field")
+    height_field = models.IntegerField(default=0)
+    width_field = models.IntegerField(default=0)
     published_date = models.DateTimeField(auto_now=False, auto_now_add=True)
     updated_date = models.DateField(auto_now=True, auto_now_add=False)
 

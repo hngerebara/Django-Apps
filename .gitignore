@@ -2,9 +2,10 @@
 *.pyc
 __pycache_/
 .DS_Store
+static/
 .env
 *.sqlite
-.idea/
+.idea/*
 *.egg-info
 .xml
 
