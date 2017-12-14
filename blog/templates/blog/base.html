@@ -1,0 +1,28 @@
+{% load staticfiles %}
+<html>
+    <head>
+         <title> First Django Page</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+
+    <body>
+    <div class="page-header">
+        {% if user.is_authenticated %}
+        <a href="{% url 'post_new' %}" class="top_menu"><span class="glyphicon glyphicon-plus">New Post</span></a>
+        {% endif %}
+        <h2><a href="">This is the first Blog Post</a></h2>
+        <p>testing out the first blog post</p>
+    </div>
+    <div class="content contatiner">
+        <div class="row">
+            <div class=""col-md-8">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+</html>
